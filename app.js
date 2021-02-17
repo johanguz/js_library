@@ -35,14 +35,7 @@ function Book(title, author, pages, read, coverImageUrl) {
 }
 
 function addBookToLibrary(book) {
-    myLibrary.push({title: book.title, author: book.author, pages: book.pages, read: book.read});
-}
-
-function removeBook(e) {
-    console.log(idx)
-    const bookToRemove = document.querySelector(`.idx${idx}`);
-    console.log(bookToRemove);
-    bookToRemove.remove();
+    myLibrary.push({title: book.title, author: book.author, pages: book.pages, read: book.read, coverImageUrl: book.coverImageUrl});
 }
 
 function lookUpBook(book){
@@ -58,7 +51,10 @@ function addBookToPage(book) {
             <div class="card-body">
             <h5 class="card-title">${book.title}</h5>
             <p class="card-text">by ${book.author}, ${book.pages} pages, is ${book.read}</p>
-            <a href="#" class="btn btn-primary removeBtn">Remove Book</a>
+            <div class="row Justify-center-items">
+            <a href="#" class="btn btn-primary removeBtn col-6">Remove Book From Library</a>
+            <a href="#" class="btn btn-success changeBtn col-6">Change Read Status</a>
+            </div>
             </div>
         </div>`
     document
@@ -67,5 +63,19 @@ function addBookToPage(book) {
           document.querySelector(`.idx${idx}`).remove();
           myLibrary.splice(idx, 1);
         })
+    document
+        .querySelector('.changeBtn')
+        .addEventListener("click", () => {
+            document.querySelector(`.idx${idx}`).remove();
+          if (myLibrary[idx].read === "Read") {
+              myLibrary[idx].read = "Not Read";
+              addBookToPage(myLibrary[idx]);
+          }
+          else {
+            myLibrary[idx].read = "Read";
+            addBookToPage(myLibrary[idx]);
+          }
+        //   addBookToPage(book);
+        })    
 }
    

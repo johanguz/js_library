@@ -17,7 +17,7 @@
               Add a New Book
             </button>
           </h2>
-          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
             <form class="row g-3">
                 <div class="col-md-6">
@@ -33,8 +33,11 @@
                     <input type="text" class="form-control" id="pages">  
                 </div>
                 <div class="col-md-6">
-                    <label for="inputRead" class="form-label">Has it been read?</label>
-                    <input type="text" class="form-control" id="read">  
+                    <select class="form-select" aria-label="Default select example" id="read">
+                        <option selected>Have You Read the Book?</option>
+                        <option value="Read">Read</option>
+                        <option value="Not Read">Not Read</option>
+                      </select>
                 </div>
                 <div class="col-md-6">
                     <label for="inputCoverUrl" class="form-label">Link to Book Cover</label>
